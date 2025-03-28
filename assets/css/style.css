@@ -1,0 +1,43 @@
+/* Make the body take the full viewport height 📏 */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Ensure the main content expands and pushes the footer down ⬇️ */
+main {
+  flex-grow: 1;
+}
+
+/* Footer styles 🦶 */
+.footer {
+  text-align: center; /* Center the text */
+  width: 100%; /* Full width */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #f8f9fa; /* Light gray background */
+  margin-top: auto; /* Push the footer to the bottom when content is small */
+}
+
+/* Map container styles 🗺️ */
+#mapInput,
+#mapDisplay {
+  height: 350px; /* Fixed height */
+  width: 100%; /* Full width */
+  margin-bottom: 1rem; /* Add some space below */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+/* Data display container 📝 */
+#divData {
+  padding: 20px; /* Add spacing inside */
+  border-radius: 20px; /* Smooth rounded corners */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: black; /* Ensure text is black */
+  border: 1px solid #ccc; /* Light border */
+  min-height: 150px; /* Ensure minimum height */
+}
