@@ -9,6 +9,13 @@
 - 🌐 [adelinomasioli.com](https://adelinomasioli.com)  
 - 📱 +351 932 992 170  
 
+
+## Professor
+
+**José Joaquim Moreira**  
+*Project coordinator*  
+- ✉️ [jose.moreira@islagaia.pt](mailto:jose.moreira@islagaia.pt)  
+
 Estaciona JS is a simple yet practical web application designed to help you remember where you parked your car! 🅿️ Whether you're in a crowded parking lot, a multi-story garage, or an outdoor parking area, this tool lets you save important details about your parking spot, including its color, section, and number. Additionally, you can pinpoint the exact location on an interactive map, all stored directly in your browser's local storage, ensuring easy access every time you need it.
 
 ---
