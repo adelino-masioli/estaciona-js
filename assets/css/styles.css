@@ -1,0 +1,52 @@
+/* css/styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern font stack */
+}
+
+.navbar-brand img {
+    /* Fine-tune header logo if needed */
+}
+
+.card {
+    border: none; /* Removes default card border if shadow is sufficient */
+}
+
+/* Style for floating input placeholders when not focused, if desired */
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    /* opacity: .65; */ /* Example adjustment */
+}
+
+.form-floating > label {
+    /* font-size: 0.9rem; */ /* Adjust label size if needed */
+}
+
+/* Ensure footer doesn't overlap content on very short pages,
+   especially if main content doesn't fill the screen.
+   The d-flex flex-column min-vh-100 on body and mt-auto on footer already help a lot.
+*/
+.footer {
+    /* z-index: 1000; */ /* If overlap issues occur */
+}
+
+/* Add subtle animations for buttons or cards if desired */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    /* transform: translateY(-3px); */
+    /* box-shadow: 0 8px 16px rgba(0,0,0,0.1); */
+    /* transition: all 0.2s ease-in-out; */ /* Be mindful of hover effects on mobile */
+}
+
+/* Fine-grained Responsiveness (Examples) */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1.5rem !important; /* Less padding on very small screens */
+    }
+    h3.card-title {
+        font-size: 1.5rem; /* Smaller title on mobile */
+    }
+}

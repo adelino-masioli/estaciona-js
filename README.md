@@ -1,124 +1,167 @@
-# 🚗 Estaciona JS - Your Car Park Locator
+# 🚗 Firebase Park  
+### *Your Cloud-Powered Car Park Locator*
 
-## Author
+---
 
-**Adelino Masioli**  
-*Software Engineer*  
+## 👤 Author
 
-- ✉️ [adelinomasioli@gmail.com](mailto:adelinomasioli@gmail.com)  
-- 🌐 [adelinomasioli.com](https://adelinomasioli.com)  
-- 📱 +351 932 992 170  
+**Adelino Masioli** — *Software Engineer*  
+✉️ [adelinomasioli@gmail.com](mailto:adelinomasioli@gmail.com)  
+🌐 [adelinomasioli.com](https://adelinomasioli.com)  
+📱 +351 932 992 170  
 
+## 🎓 Professor
 
-## Professor
+**José Joaquim Moreira** — *Project Coordinator*  
+✉️ [jose.moreira@islagaia.pt](mailto:jose.moreira@islagaia.pt)
 
-**José Joaquim Moreira**  
-*Project coordinator*  
-- ✉️ [jose.moreira@islagaia.pt](mailto:jose.moreira@islagaia.pt)  
+---
 
-Estaciona JS is a simple yet practical web application designed to help you remember where you parked your car! 🅿️ Whether you're in a crowded parking lot, a multi-story garage, or an outdoor parking area, this tool lets you save important details about your parking spot, including its color, section, and number. Additionally, you can pinpoint the exact location on an interactive map, all stored directly in your browser's local storage, ensuring easy access every time you need it.
+## 🅿️ About the Project
+
+**Firebase Park** (formerly *Estaciona JS*) is a web application that helps you **remember where you parked your car**. This enhanced version uses **Firebase** for backend services, including:
+
+- 🔐 User Authentication  
+- ☁️ Cloud Firestore (real-time NoSQL database)
+
+Users can save important details like color, section, number, and pinpoint the exact location using an interactive map. All data is securely stored in the cloud and accessible from any device after login.
 
 ---
 
 ## 📸 Screenshots
 
-Here's a quick look at the app in action:
+> *(Screenshots might need an update to reflect Firebase integration and UI improvements)*
 
-### Home Page (Register Parking Spot)
+**Login / Register Spot**  
 ![Home Page](assets/images/screen/screencapture-home.png)
 
-### View Parking Spot
+**View Saved Parking Places (with map & colored pins)**  
 ![View Parking Spot](assets/images/screen/screencapture-place.png)
 
-### About Page
+**About Page**  
 ![About Page](assets/images/screen/screencapture-about.png)
 
 ---
 
 ## 🎓 Academic Context
 
-This project was developed as part of the **Master's Degree in Engineering of Web Technologies and Systems** at **ISLA Gaia – Instituto Politécnico de Gestão e Tecnologia** 🇵🇹. The application was developed as a practical exercise for the **Advanced Web Programming** course.
+This project was developed as part of the **Master’s in Engineering of Web Technologies and Systems** at  
+**ISLA Gaia – Instituto Politécnico de Gestão e Tecnologia** 🇵🇹  
+for the course: **Programação Web Avançada** (Advanced Web Programming).
 
-* **Institution:** ISLA Gaia – Instituto Politécnico de Gestão e Tecnologia  
-* **Master's Degree:** Engenharia de Tecnologias e Sistemas Web (Engineering of Web Technologies and Systems)  
-* **Course:** Programação Web Avançada (Advanced Web Programming)  
-* **Student:** Adelino Masioli  
+**Student:** Adelino Masioli  
+**Degree:** Mestrado em Engenharia de Tecnologias e Sistemas Web  
 
 ---
 
 ## ✨ Features
 
-* 📝 **Input Form:** Easily register your parking spot details (colour, section, and number).
-* 🗺️ **Interactive Map:** Use Leaflet.js to visually select or pinpoint your parking location on the map.
-* 📍 **GPS Integration:** Option to centre the map on your current GPS location (requires browser permission).
-* 💾 **Persistent Storage:** Your data is saved in the browser's `localStorage`, meaning no server-side database is needed.
-* 👀 **View Saved Spot:** See the details of your last saved parking spot with the location clearly marked on a map.
-* 🎨 **Dynamic Styling:** The background colour of the details page dynamically matches the saved parking spot's colour for a quick visual reference.
-* 💅 **Responsive Design:** Styled with Bootstrap 5 for a clean, mobile-friendly interface.
-* 🧩 **Component Reusability:** The app uses jQuery to load reusable header and footer components across different pages, ensuring a consistent experience.
-* 📁 **Organized Project Structure:** Clearly structured with separate pages for different functions (`register`, `view`, `about`), making it easy to navigate and maintain.
+- 🔐 **User Authentication** via Firebase
+- ☁️ **Cloud Database (Firestore)** for storing parking spots
+- 📝 **Form Input**: Register spot details (color, section, number, map location)
+- 🗺️ **Interactive Map** with Leaflet.js for location selection
+- 📍 **GPS Integration**: Option to use current location
+- 🎨 **Colored Pins**: Markers match the chosen color for each spot
+- 🚮 **Delete Functionality**: Remove saved entries
+- 🔄 **Dynamic UI Updates**: Login/logout and navigation state updates
+- 💅 **Responsive Design**: Built with Bootstrap 5
+- 🧩 **Reusable Components**: Header/footer with jQuery includes
+- 📁 **Organized Codebase**: Clean project structure for maintainability
 
 ---
 
 ## 🛠️ Tech Stack
 
-This project utilises the following technologies:
-
-* ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-* ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-* ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-* ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
-* ![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
-* ![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=leaflet&logoColor=white)
-* 💾 Browser LocalStorage API
+| Tech | Badge |
+|------|-------|
+| HTML5 | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) |
+| CSS3 | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) |
+| JavaScript | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) |
+| Bootstrap 5 | ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white) |
+| jQuery | ![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white) |
+| Leaflet.js | ![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=leaflet&logoColor=white) |
+| Firebase | ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black) |
 
 ---
 
 ## 📂 Project Structure
 
-* 📁 `ESTACIONAJS/`
+
+*(Adjust if your paths for `styles.css`, `app-functions.js`, etc., have changed to be within `/assets/` as per recent code snippets)*
+
+* 📁 `FIREBASE_PARK/` (Or your project's root folder name)
     * 📁 `about/`
-        * 📄 `index.html`        *(About page providing application info)*
+        * 📄 `index.html`        *(About page)*
     * 📁 `assets/`
         * 📁 `css/`
-            * 📄 `style.css`         *(Custom application styles)*
+            * 📄 `styles.css`     *(Custom application styles)*
         * 📁 `images/`
-            * 🖼️ `estacionamento.png` *(Main application icon)*
-            * 🖼️ `favicon.ico`       *(Browser tab icon)*
+            * 🖼️ `park.png`       *(Main application icon used in pages)*
+            * 🖼️ `park-icon.png`  *(Smaller icon for header, optional)*
+            * 🖼️ `favicon.ico`    *(Browser tab icon)*
+            * 📁 `screen/`        *(Folder for screenshots)*
+                * 🖼️ `screencapture-home.png`
+                * 🖼️ `screencapture-place.png`
+                * 🖼️ `screencapture-about.png`
         * 📁 `js/`
-            * 📄 `scripts.js`          *(Core application JavaScript logic)*
+            * 📄 `app-functions.js`  *(Core application JavaScript logic with Firebase)*
+            * 📄 `firebase-config.js` *(Firebase project configuration)*
     * 📁 `includes/`
         * 📄 `footer.html`       *(Reusable footer component)*
         * 📄 `header.html`       *(Reusable header/navigation component)*
-    * 📁 `place/`
-        * 📄 `index.html`        *(Page to view the saved parking spot)*
-    * 📄 `index.html`            *(Main page to register a parking spot)*
-    * 📄 `README.md`            *(GitHub README.md file)*
+    * 📁 `places/`
+        * 📄 `index.html`        *(Page to view saved parking spots and map)*
+    * 📁 `register/`
+        * 📄 `index.html`        *(User registration page)*
+    * 📄 `index.html`            *(Main page: Login / Register a parking spot)*
+    * 📄 `README.md`            *(This file)*
+
 
 ---
 
 ## 🚀 Getting Started
 
-To run this application locally, follow these steps:
+### 1. **Firebase Setup**
 
-1. **Clone or Download:** Get a copy of this repository onto your local machine.
-2. **Web Server Required:** This project needs to be served by a web server due to the use of jQuery's `.load()` for includes and potentially for the Geolocation API context. Simply opening the `index.html` file directly in the browser (`file:///...`) will likely **not** work correctly.
-3. **Using VS Code & Live Server (Recommended):**
-    * Ensure you have [Visual Studio Code](https://code.visualstudio.com/) installed.
-    * Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension from the VS Code Marketplace.
-    * Open the project folder (`ESTACIONAJS/`) in VS Code.
-    * Right-click on the root `index.html` file within the VS Code Explorer.
-    * Select "Open with Live Server."
-4. **Access the App:** Your default web browser should automatically open the application, typically at an address like `http://127.0.0.1:5500` (the port number may vary).
-5. **Usage:**
-    * Use the navigation menu ("Registar Lugar", "Ver Lugar", "Sobre") to move between pages.
-    * On the "Registar Lugar" page, fill in the details and optionally click/drag on the map to set the location.
-    * Click "Usar Localização" in the menu to attempt centering the map on your current GPS location (you will need to grant permission when the browser asks).
-    * Click "Guardar lugar" to save the information.
-    * Visit "Ver Lugar" to see the saved details and map marker.
+- Create a Firebase project at [firebase.google.com](https://firebase.google.com/)
+- Add a Web App and copy the config object
+- Paste it into `/assets/js/firebase-config.js`
+- Enable:
+  - 🔐 **Authentication** (Email/Password)
+  - ☁️ **Firestore Database** (use Native mode)
+  - ⚠️ For development:  
+    ```
+    allow read, write: if true;
+    ```
+    *(Secure this for production!)*
+
+### 2. **Clone & Run**
+
+- Download or clone the repo
+- Open with a web server (direct `file://` won't work)
+
+### 3. **Using VS Code + Live Server (Recommended)**
+
+- Install [VS Code](https://code.visualstudio.com/)
+- Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension
+- Open the project folder
+- Right-click `index.html` → "Open with Live Server"
+- Navigate to `http://127.0.0.1:5500` in your browser
+
+### 4. **App Usage**
+
+- Register or log in
+- On the **Home** page:
+  - Enter parking details
+  - Choose location via map or GPS
+  - Click **Save Place**
+- Go to **Places** to view/delete saved entries
+- Use **Logout** in the header to sign out
 
 ---
 
 ## 🙏 Credits
 
-This application is based on an exercise specification provided by **METS** (2024-2025) and developed in the academic context mentioned above.
+Developed as part of the **METS (2024–2025)** academic program, this project expands upon an original exercise by incorporating **Firebase** integration and enhanced functionality.
+
+---

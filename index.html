@@ -4,101 +4,137 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estaciona JS - Register</title>
-    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Firebase Park - Parking Management</title>
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="/assets/css/styles.css">
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script type="module" src="/assets/js/app-functions.js"></script>
+
+    <script type="module">
+        // This script runs after app-functions.js is loaded due to module type
+        import { setupHeader, updateMainContentVisibility } from '/assets/js/app-functions.js';
+
+        $(function() { // DOM Ready
+            $("#header").load("/includes/header.html", function() {
+                // Ensure setupHeader is a function and call it
+                if (typeof setupHeader === 'function') {
+                    setupHeader(); // Initialize header (active links, auth buttons)
+                } else {
+                    console.error("setupHeader function not found. Check app-functions.js export.");
+                }
+            });
+            $("#footer").load("/includes/footer.html", function() {
+                // Ensure the year script in the footer runs after loading
+                if (document.getElementById("currentYear") && !document.getElementById("currentYear").textContent && typeof new Date === 'function') {
+                     document.getElementById("currentYear").textContent = new Date().getFullYear();
+                }
+            });
+
+            // This is crucial for index.html to set up forms and input map visibility
+            if (typeof updateMainContentVisibility === 'function') {
+                updateMainContentVisibility();
+            } else {
+                console.error("updateMainContentVisibility function not found. Check app-functions.js export.");
+            }
+        });
+    </script>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-light-subtle">
     <div id="header"></div>
 
-    <main class="container flex-shrink-0" style="padding-top: 20px;">
-        <div class="text-center mb-4">
-            <img src="/assets/images/estacionamento.png" alt="Parking Icon" width="120px"> 
-            <h1>Register Spot</h1>
-        </div>
-
+    <main class="container flex-grow-1 py-4">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
-                <h2 class="h4 mb-3 text-center">Spot Details</h2>
-                <div class="mb-3">
-                    <label for="inputColor" class="form-label">Color:</label>
-                    <select class="form-select" id="inputColor">
-                        <option value="..." selected>Select a Color...</option>
-                        <option value="Yellow">Yellow</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Orange">Orange</option>
-                        <option value="Green">Green</option>
-                        <option value="Red">Red</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="inputSection" class="form-label">Section:</label>
-                    <input type="text" id="inputSection" class="form-control" placeholder="E.g.: A, B1, Red...">
-                </div>
-                <div class="mb-3">
-                    <label for="inputNumber" class="form-label">Number:</label>
-                    <input type="number" id="inputNumber" class="form-control" placeholder="E.g.: 120, 55...">
+                <div class="text-center mb-4">
+                    <img src="/assets/images/park.png" alt="Firebase Park Main Logo" class="img-fluid" style="max-width: 100px;">
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Location (Optional): <small class="text-muted">Click/drag on the map</small></label>
-                    <div id="mapInput">
-                        <p class="text-muted text-center pt-5">Loading map...</p> 
+                <div id="DivLogin" class="card shadow-lg" style="display: none;"> {/* Initially hidden if setup by JS */}
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="card-title text-center mb-4 fw-bold">Access Platform</h3>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="text-email" placeholder="your@email.com">
+                            <label for="text-email"><i class="fas fa-envelope me-2"></i>Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="text-password" placeholder="Your Password">
+                            <label for="text-password"><i class="fas fa-lock me-2"></i>Password</label>
+                        </div>
+                        <div class="d-grid gap-2 mb-3">
+                            <button id="btnLogin" type="button" class="btn btn-primary btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <a href="/register/" class="btn btn-link">Create new account</a>
+                        </div>
+                        <div id="DivAnimationLogin" class="text-center mt-3" style="display: none;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div id="messageLogin" class="mt-3"></div>
                     </div>
                 </div>
 
-                <button onclick="saveData();" class="btn btn-primary w-100 mb-4">Save Spot</button>
+                <div id="DivPlace" class="card shadow-lg" style="display: none;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="card-title text-center mb-4 fw-bold">Register New Parking Place</h3>
+
+                        <div class="mb-3">
+                            <label for="mapInput" class="form-label fw-medium">Mark Location on Map (Optional):</label>
+                            <div id="mapInput" style="height: 300px; width: 100%; border-radius: 0.375rem; border: 1px solid #ced4da;">
+                                </div>
+                            <button type="button" id="btnGeolocate" class="btn btn-outline-secondary btn-sm mt-2">
+                                <i class="fas fa-location-arrow me-1"></i>Use My Current Location
+                            </button>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="inputColor">
+                                <option value="" selected>Select color...</option>
+                                <option value="Yellow">Yellow</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Orange">Orange</option>
+                                <option value="Green">Green</option>
+                                <option value="Red">Red</option>
+                            </select>
+                            <label for="inputColor"><i class="fas fa-palette me-2"></i>Color</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" id="inputSection" class="form-control" placeholder="E.g., A1">
+                            <label for="inputSection"><i class="fas fa-map-signs me-2"></i>Section</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" id="inputNumber" class="form-control" placeholder="E.g., 101">
+                            <label for="inputNumber"><i class="fas fa-hashtag me-2"></i>Number</label>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button id="btnSave" type="button" class="btn btn-success btn-lg">
+                                <i class="fas fa-save me-2"></i>Save Place
+                            </button>
+                        </div>
+                        <div id="DivAnimationPlace" class="text-center mt-3" style="display: none;">
+                             <div class="spinner-border text-success" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div id="messagePlace" class="mt-3"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <div id="footer" class="mt-auto"></div>
-
-    <div class="modal fade" id="MessageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="messageModalLabel">Estaciona JS</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Spot successfully registered!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="/assets/js/scripts.js"></script>
-    <script>
-        $(function () {
-            // Load includes
-            $("#header").load("includes/header.html");
-            $("#footer").load("includes/footer.html");
-
-            // Initialize input map AFTER the DOM is ready
-            if (typeof initMapInput === 'function') {
-                initMapInput();
-            } else {
-                console.error("Function initMapInput is not defined or was not loaded.");
-                $('#mapInput').html('<p class="text-danger text-center pt-5">Error loading map script.</p>');
-            }
-        });
-    </script>
+    <div id="footer"></div>
 </body>
 </html>

@@ -1,6 +1,11 @@
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-      <hr />
-      <span class="text-muted">&copy; METSW 2024-2025</span>
+<footer class="footer mt-auto py-3 bg-light border-top">
+    <div class="container text-center">
+        <span class="text-muted">&copy; <span id="currentYear"></span> METSW - Firebase Park. All rights reserved.</span>
     </div>
-  </footer>
+</footer>
+<script>
+    // Ensure this script runs after the footer is loaded
+    if (document.getElementById("currentYear")) {
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    }
+</script>
